@@ -1,9 +1,8 @@
 import * as ACTION_TYPES from '../actions/ActionTypes'
-import { act } from 'react-test-renderer';
 
 const initialState = {
     isLoading : false,
-    data : null,
+    movies : null,
     errorMessage : null
 }
 
@@ -20,7 +19,7 @@ export const movieReducer = (state = initialState , actions) => {
             return{
                 ...state,
                 isLoading: actions.isLoading,
-                data : actions.data
+                movies : actions.movies
             }
 
         case ACTION_TYPES.GET_MOVIES_FAILED:

@@ -12,7 +12,7 @@ import {Card} from 'react-native-elements';
 export default class Article extends Component {
   render() {
     const {
-      title,
+      tite,
       description,
       publishedAt,
       source,
@@ -29,13 +29,13 @@ export default class Article extends Component {
         useForeground
         onPress={() => Linking.openURL(url)}>
         <Card
-          featuredTitle={title}
+          featuredTitle={tite}
           featuredTitleStyle={styles.featuredTitleStyle}
           containerStyle={{borderRadius: 10}}
           image={{
             uri: urlToImage || defaulImg,
           }}>
-          <Text style={{marginBottom: 10}}>
+          <Text style={{marginBottom:10}}>
             {description || 'Read More...'}
           </Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>

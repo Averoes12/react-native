@@ -13,29 +13,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {articles: [], refreshing: true};
-    // this.fetchNews = this.fetchNews.bind(this);
+
     this.props.getNews();
   }
 
-  // fetchNews() {
-  //   getNews()
-  //     .then(articles => this.setState({articles, refreshing: false}))
-  //     .catch(() => this.setState({refreshing: true}));
-  // }
-
-  // componentDidMount() {
-  //   this.fetchNews();
-  // }
-
-  handleRefresh() {
-    this.setState(
-      {
-        refreshing: true,
-      },
-      () => this.fetchNews,
-    );
-  }
 
   static navigationOptions = {
     title: 'Home',
@@ -49,6 +30,7 @@ class Home extends Component {
       <FlatList
         data={this.props.news}
         renderItem={({item}) => <Article article={item} />}
+        // refreshing={this.handleRefresh()}
         keyExtractor={item => item.url}
       />
     );

@@ -12,7 +12,7 @@ const getMoviesStart = () => {
 const getMovieSuccess = (movies) => {
     return {
         type : ACTION_TYPES.GET_MOVIES_SUCCESS,
-        data : movies,
+        movies : movies,
         isLoading : false
     }
 }
@@ -27,14 +27,12 @@ const getMoviesFailed = (errorMessage) => {
 
 export const getMovies = () => {
     return (dispatch) => {
-
         dispatch(getMoviesStart());
         axios.get('https://api.themoviedb.org/3/discover/movie?api_key=9428d1de175b89f3fba2af8d0b021de0')
         .then((response) => {
             dispatch(getMovieSuccess(response.data.results));
-            console.log(resp.data.articles)
-        })
-        .catch((error) => {
+            console.log(response.data.results)
+        }).catch((error) => {
             dispatch(getMoviesFailed(error))
         }) 
     }
