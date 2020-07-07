@@ -1,32 +1,62 @@
 
 
 import React , { Component } from 'react';
-import { TouchableNativeFeedback, View, Image, Text, Alert } from 'react-native';
+import { TouchableNativeFeedback, View, Image, Text, Alert, StyleSheet } from 'react-native';
+import { Card, Rating } from 'react-native-elements';
+import moment from 'moment';
 
 export default class MovieItem extends Component{
     
     render(){
         const {
-            original_title,
+            title,
             release_date,
             poster_path,
             id,
+            vote_average,
+            genre_ids,
         } = this.props.results;
 
-
+        const time = moment(release_date || moment.now).fromNow();
         return(
             <TouchableNativeFeedback
             useForeground
             onPress={() => alert(id + " clicked")}> 
-                <View style={{flexDirection:'row', backgroundColor:'dark-grey', height:120, marginBottom:8}}>
-                    <Image source = {{uri: 'https://image.tmdb.org/t/p/w500' + poster_path}} />
-                    <View style={{flexDirection:'column', justifyContent:'space-between'}}>
-                        <Text style={{color:'black'}}>{original_title}</Text>
-                        <Text>{release_date}</Text>
-                    </View>
-                </View>
-               
+            <Card containerStyle={style.cardContainer}
+                  imageStyle={style.imageStyle}
+                  image={{uri : 'https://image.tmdb.org/t/p/w500/' + poster_path}}>
+                <Text numberOfLines={2} ellipsizeMode="clip" style={style.title}>{title}</Text>
+                <Rating 
+                type='heart' 
+                style={style.rating}
+                imageSize={20} 
+                startingValue={vote_average / 2}
+                readonly   
+                />
+                <Text style={style.title}>{time}</Text>
+                </Card>
             </TouchableNativeFeedback>
         )
     }
 }
+
+const style = StyleSheet.create({
+    cardContainer :{
+        borderRadius:10,
+      
+    },
+    imageStyle:{
+        resizeMode:"cover",
+        height:200,
+        borderTopLeftRadius:10,
+        borderTopRightRadius:10,
+    },
+    title:{
+        width:150,
+        textAlign:"center"
+    },
+    
+    rating:{
+        paddingVertical:10
+    }
+})

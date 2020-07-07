@@ -28,7 +28,7 @@ class Home extends Component {
   render() {
     return (
       <FlatList
-        data={this.props.news}
+        data={this.props.data}
         renderItem={({item}) => <Article article={item} />}
         // refreshing={this.handleRefresh()}
         keyExtractor={item => item.url}
@@ -38,7 +38,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  news: state.getNewsReducer.news,
+  data: state.getNewsReducer.news,
 })
 
 const mapDispatchToProps = (dispatch) => ({

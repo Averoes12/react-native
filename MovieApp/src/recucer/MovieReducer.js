@@ -2,7 +2,7 @@ import * as ACTION_TYPES from '../actions/ActionTypes'
 
 const initialState = {
     isLoading : false,
-    movies : null,
+    movies : [],
     errorMessage : null
 }
 

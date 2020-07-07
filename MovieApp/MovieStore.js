@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
     rootReducer,
-    compose(applyMiddleware(thunk, logger))
+    compose(applyMiddleware(thunk, logger)),
 );
 
-export default store
+export default store;
