@@ -95,7 +95,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator >
             <Stack.Screen
               name="Home"
               component={Home}

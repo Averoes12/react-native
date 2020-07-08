@@ -6,21 +6,19 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import Home from './src/compontent/Home';
-import store from './MovieStore'
+import React, {Component} from 'react';
+import {Provider} from 'react-redux';
+import Home from './src/screen/Home';
+import store from './MovieStore';
+import Navigator from './src/navigation/MainNav'
 
-class App extends Component{
+function App() {
 
-  render() {
-    return (
-      <Provider store={store}>
-        <Home />
 
-      </Provider>
-    )
-  }
+  return (
+    <Provider store={store}>
+      <Navigator />
+    </Provider>
+  );
 }
-
 export default App;

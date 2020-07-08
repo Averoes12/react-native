@@ -1,10 +1,20 @@
-import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
+import Home from '../screen/Home';
+import Detail from '../screen/Detail'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createMaterialTopTabNavigator, createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 
-const mediaType = createBottomTabNavigator({
+const screens = {
+    Movie : {
+        screen : Home
+    },
 
-})
+    Detail :{
+        screen : Detail
+    }
+}
 
-const movieStack = createStackNavigator({
-    
-})
+
+const stack = createStackNavigator(screens)
+
+export default createAppContainer(stack)
