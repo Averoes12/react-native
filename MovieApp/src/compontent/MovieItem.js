@@ -16,8 +16,6 @@ export default class MovieItem extends Component{
             poster_path,
             id,
             vote_average,
-            genre_ids,
-            overview,
         } = this.props.results;
 
         const {
@@ -30,12 +28,6 @@ export default class MovieItem extends Component{
             useForeground
             onPress={() => navigation.navigate("Detail", {
                     id : id,
-                    title : title,
-                    genre_ids: genre_ids,
-                    poster_path : poster_path,
-                    vote_average: vote_average,
-                    release_date : release_date,
-                    overview : overview
 
                 
             })}> 

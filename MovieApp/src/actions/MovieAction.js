@@ -71,28 +71,7 @@ export const getDiscoverFailed = error => {
   };
 };
 
-export const getDetailStart = () => {
-  return {
-    type: ACTION_TYPES.GET_DETAIL_MOVIE_START,
-    isLoading: true,
-  };
-};
 
-export const getDetailSuccess = detail => {
-  return {
-    type: ACTION_TYPES.GET_DETAIL_MOVIE_SUCCESS,
-    isLoading: false,
-    detail: detail,
-  };
-};
-
-export const getDetailFailed = error => {
-  return {
-    type: ACTION_TYPES.GET_DETAIL_MOVIE_FAILED,
-    isLoading: false,
-    error: error,
-  };
-};
 
 export const getMovies = () => {
   return dispatch => {
@@ -139,17 +118,3 @@ export const getDiscover = () => {
   };
 };
 
-export const getDetailMovie = (movie_id) => {
-  return dispatch => {
-    dispatch(getDetailStart);
-    axios
-      .get('https://api.themoviedb.org/3/movie/'+ movie_id + '?api_key=9428d1de175b89f3fba2af8d0b021de0')
-      .then(responose => {
-        dispatch(getDetailSuccess(responose.data));
-        console.log(getDetailSuccess("Detail Movie " + responose.data))
-      })
-      .catch(error => {
-        dispatch(getDetailFailed("Movie error " + error));
-      });
-  };
-};

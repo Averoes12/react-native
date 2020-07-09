@@ -5,7 +5,6 @@ const initialState = {
   movies: [],
   trending: null,
   discover: null,
-  detail: null,
   errorMessage: null,
 };
 
