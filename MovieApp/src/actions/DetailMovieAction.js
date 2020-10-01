@@ -97,12 +97,13 @@ export const getReviewFailed = error => {
 
 export const getDetailMovie = movie_id => {
   return dispatch => {
+    const BASE_URL = 'https://api.themoviedb.org/3/movie/';
     dispatch(getDetailStart());
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/' +
+        BASE_URL +
           movie_id +
-          '?api_key=9428d1de175b89f3fba2af8d0b021de0',
+          '?'+ API_KEY,
       )
       .then(responose => {
         dispatch(getDetailSuccess(responose.data));
@@ -116,10 +117,11 @@ export const getDetailMovie = movie_id => {
 
 export const getRecomended = movie_id => {
   return dispatch => {
+    const BASE_URL = 'https://api.themoviedb.org/3/movie/';
     dispatch(getRecomendedMovieStart());
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/' +
+        BASE_URL +
           movie_id +
           '/recommendations?api_key=' +
           API_KEY,
@@ -136,10 +138,11 @@ export const getRecomended = movie_id => {
 
 export const getSimiliar = movie_id => {
   return dispatch => {
+    const BASE_URL = 'https://api.themoviedb.org/3/movie/';
     dispatch(getSimiliarMovieStart());
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/' +
+        BASE_URL +
           movie_id +
           '/similar?api_key=' +
           API_KEY,
@@ -155,9 +158,10 @@ export const getSimiliar = movie_id => {
 
 export const getReviews = movie_id => {
     return dispatch => {
+      const BASE_URL = 'https://api.themoviedb.org/3/movie/';
         dispatch(getReviewsStart())
         axios.get(
-            'https://api.themoviedb.org/3/movie/' + movie_id + '/reviews?api_key=' + API_KEY
+            BASE_URL + movie_id + '/reviews?api_key=' + API_KEY
         ).then(response => {
             dispatch(getSimiliarMovieSuccess(response.data.results))
         }).catch(error => {
